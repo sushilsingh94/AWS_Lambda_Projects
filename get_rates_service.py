@@ -16,8 +16,13 @@ class ValidLane:
 lane = []
 
 def get_valid_rates(origin, destination, service):
-    result = client.service.getRates(1,service,"North America",1,"05/05/2018","ROAD","USA","PEORIA","IL","USA","MORTON","IL",origin,destination)
-    
+    result = ''
+    try:
+        result = client.service.getRates(1,service,"North America",1,"05/05/2018","ROAD","USA","PEORIA","IL","USA","MORTON","IL",origin,destination)
+    except Exception as e:
+        return str(e)
+
+    print("after exception")
     for rate in result.rateRoute.RRWSRateRoute:
         tempcarrier = rate.carrierType
         templane = rate.validLaneType

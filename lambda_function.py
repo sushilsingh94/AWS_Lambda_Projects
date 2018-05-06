@@ -278,8 +278,11 @@ def get_rates_response(item1):
     service = item1.service
     equipmenttype = item1.equipmenttype
     
-    validLanes = r1.get_valid_rates(origin, destination, service)
+    validLanes = r1.get_valid_rates(item1.origin, item1.destination, item1.service)
     print("-----------got response from webservice call")
+    if isinstance(validLanes, str):
+        return ("Error occured, "+validLanes)
+    
     return (
         ' For Origin '+item1.origin+ ' and Destination '+item1.destination+
         ' Best Caterpillar approved Carrier is ' +validLanes[0].carriername +
