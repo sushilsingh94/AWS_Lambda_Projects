@@ -1,6 +1,6 @@
 from zeep import Client
 
-WSDLFILE = 'https://transportationha.rd.cat.com/RM/services/RateRouteGuide.wsdl'
+WSDLFILE = '.wsdl'
 
 client = Client(WSDLFILE)
 
